@@ -8,3 +8,5 @@ metadata:
 spec:
   domains:
     - ryul.site
+    - www.ryul.site
+    # wildecard no allow
