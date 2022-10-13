@@ -1,21 +1,17 @@
+# kubectl apply -f managed-cert.yaml
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: myingress
+  namespace: petclinic
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "k8s-ip" # gcp의 static ip
     networking.gke.io/managed-certificates: managed-cert # gcp certification
-    networking.gke.io/v1beta1.FrontendConfig: "https-redirect"
-
+    kubernetes.io/ingress.class: "gce"
 spec:
-  rules:
-    - host: ryul.site
-      http:
-        paths:
-          - pathType: Prefix
-            path: "/"
-            backend:
-              service:
-                name: petclinic-web-svc # 적용할 svc 이름
-                port:
-                  number: 80
+  defaultBackend:
+    service:
+      name: petclinic-web-svc
+      port:
+        number: 80

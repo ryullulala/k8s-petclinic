@@ -22,7 +22,7 @@ metadata:
   name: petclinic-web-svc
   namespace: petclinic
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: web
   ports:

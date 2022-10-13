@@ -1,7 +1,10 @@
+# kubectl apply -f managed-cert.yaml
+
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
   name: managed-cert
+  namespace: petclinic
 spec:
   domains:
     - ryul.site
