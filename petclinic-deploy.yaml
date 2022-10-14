@@ -21,6 +21,12 @@ spec:
           image: asia-northeast3-docker.pkg.dev/project-363006/petclinic-repo/petclinic-was:v1
           ports:
             - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
 
 ---
 apiVersion: apps/v1
@@ -44,3 +50,9 @@ spec:
           image: asia-northeast3-docker.pkg.dev/project-363006/petclinic-repo/petclinic-web:v1
           ports:
             - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
