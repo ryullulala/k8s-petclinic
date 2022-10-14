@@ -19,6 +19,8 @@ spec:
       containers:
         - name: was
           image: asia-northeast3-docker.pkg.dev/project-363006/petclinic-repo/petclinic-was:v1
+          ports:
+            - containerPort: 80
 
 ---
 apiVersion: apps/v1
@@ -40,3 +42,5 @@ spec:
       containers:
         - name: web
           image: asia-northeast3-docker.pkg.dev/project-363006/petclinic-repo/petclinic-web:v1
+          ports:
+            - containerPort: 80
